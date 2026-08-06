@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Máximos e Mínimos">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0C2340">
+<title>Máximos & Mínimos</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C2340'/%3E%3Cpath d='M20 68 L38 46 L52 58 L80 28' stroke='%23C9A24B' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='80' cy='28' r='6' fill='%23C9A24B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C2340;
+    --navy-2:#16324F;
+    --paper:#F6F4EE;
+    --card:#FFFFFF;
+    --ink:#1B2430;
+    --muted:#6B7280;
+    --green:#0F6E56;
+    --green-bg:#EAF3DE;
+    --gold:#C9A24B;
+    --line:#E7E3D8;
+    --red:#A32D2D;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:48px;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;
+    padding:calc(env(safe-area-inset-top) + 18px) 20px 16px;
+    box-shadow:0 6px 18px rgba(12,35,64,0.18);
+  }
+  .eyebrow{
+    font-family:'Roboto Mono',monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 4px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:26px;
+    margin:0 0 2px;
+    letter-spacing:-0.01em;
+  }
+  .updated{
+    font-size:12.5px;
+    color:#C7D2E0;
+    margin:6px 0 14px;
+  }
+  .tabs{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    background:rgba(255,255,255,0.08);
+    color:#DCE4EE;
+    border:1px solid rgba(255,255,255,0.14);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .15s ease, color .15s ease;
+  }
+  .tab.active{
+    background:var(--gold);
+    color:#25200F;
+    border-color:var(--gold);
+  }
+
+  main{max-width:900px; margin:0 auto; padding:18px 16px 0;}
+
+  .group{margin-bottom:28px;}
+  .group-title{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--navy);
+    margin:0 0 10px 2px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .group-title .count{
+    font-family:'Roboto Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    font-weight:500;
+    background:#EDEAE0;
+    padding:2px 7px;
+    border-radius:999px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px 15px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card.today::before{
+    content:"NOVO MÁXIMO HOJE";
+    position:absolute;
+    top:0; right:0;
+    font-family:'Roboto Mono',monospace;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.06em;
+    background:var(--green);
+    color:#fff;
+    padding:4px 9px 4px 11px;
+    border-bottom-left-radius:10px;
+  }
+
+  .card-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px;
+    margin-bottom:2px;
+  }
+  .ticker{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:19px;
+    color:var(--navy);
+  }
+  .name{
+    font-size:12px;
+    color:var(--muted);
+    margin:0 0 10px;
+  }
+  .price-now{
+    font-family:'Roboto Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  .range-wrap{margin:10px 0 12px;}
+  .range-bar{
+    position:relative;
+    height:6px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--green) 100%);
+    opacity:0.35;
+  }
+  .range-marker{
+    position:absolute;
+    top:-4px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2.5px solid #fff;
+    box-shadow:0 1px 4px rgba(0,0,0,0.35);
+    transform:translateX(-50%);
+  }
+  .range-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Roboto Mono',monospace;
+    font-size:10.5px;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+  .stat-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    margin:0 0 3px;
+  }
+  .stat-value{
+    font-family:'Roboto Mono',monospace;
+    font-weight:600;
+    font-size:15px;
+  }
+  .stat-value.hi{color:var(--green);}
+  .stat-value.lo{color:var(--red);}
+  .stat-date{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:1px;
+  }
+  .note{
+    font-size:11.5px;
+    color:var(--muted);
+    margin-top:8px;
+    font-style:italic;
+  }
+
+  footer{
+    max-width:900px;
+    margin:20px auto 0;
+    padding:14px 20px 30px;
+    font-size:11.5px;
+    color:var(--muted);
+    line-height:1.5;
+  }
+
+  @media (min-width:640px){
+    .grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:30px;}
+  }
+  @media (min-width:900px){
+    .grid{grid-template-columns:1fr 1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Máximos &amp; Mínimos</h1>
+  <p class="updated">Atualizado a 6 de agosto de 2026 · preços de mercado, pesquisa externa</p>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<main id="main"></main>
+
+<footer>
+  Dados de mercado recolhidos em pesquisa web (Yahoo Finance, CNBC, MacroTrends e outras fontes). FANUY (ADR) sem máximo histórico fiável disponível. EDP refere-se à ação portuguesa (Euronext Lisboa), não ao ADR americano. Isto não é aconselhamento de investimento.
+</footer>
+
+<script>
+const DATA = [
+  { group: "Carteira particular", items: [
+    { t:"ASML", name:"ASML Holding N.V.", ccy:"€", ath:1741.00, athDate:"30 jun 2026", low:587.80, lowDate:"ago 2025", now:1465.80, approxLow:true },
+    { t:"MU", name:"Micron Technology", ccy:"$", ath:1255.00, athDate:"25 jun 2026", low:106.75, lowDate:"1 ago 2025", now:892.67 },
+    { t:"NVDA", name:"NVIDIA Corporation", ccy:"$", ath:236.54, athDate:"14 mai 2026", low:164.07, lowDate:"5 set 2025", now:219.22 },
+    { t:"MSFT", name:"Microsoft Corporation", ccy:"$", ath:555.45, athDate:"31 jul 2025", low:349.20, lowDate:"25 jun 2026", now:487.46 },
+    { t:"APH", name:"Amphenol Corporation", ccy:"$", ath:178.52, athDate:"30 jun 2026", low:102.76, lowDate:"ago 2025", now:171.33 },
+    { t:"GOOGL", name:"Alphabet Inc.", ccy:"$", ath:408.61, athDate:"18 mai 2026", low:193.67, lowDate:"6 ago 2025", now:362.43 },
+    { t:"AVGO", name:"Broadcom Inc.", ccy:"$", ath:495.00, athDate:"3 jun 2026", low:281.87, lowDate:"ago 2025", now:418.28 },
+    { t:"EDP", name:"EDP — Energias de Portugal", ccy:"€", ath:5.66, athDate:"8 jan 2021", low:3.618, lowDate:"10 ago 2025", now:4.02, approxLow:true },
+    { t:"O", name:"Realty Income Corp.", ccy:"$", ath:82.23, athDate:"20 fev 2020", low:55.86, lowDate:"23 dez 2025", now:62.90 },
+    { t:"VICI", name:"VICI Properties Inc.", ccy:"$", ath:33.99, athDate:"2025/26", low:26.08, lowDate:"9 jul 2026", now:26.72, approxAth:true },
+  ]},
+  { group: "Robótica e Cibersegurança", items: [
+    { t:"CHKP", name:"Check Point Software", ccy:"$", ath:233.78, athDate:"6 jun 2025", low:112.23, lowDate:"30 abr 2026", now:123.92 },
+    { t:"FTNT", name:"Fortinet, Inc.", ccy:"$", ath:170.35, athDate:"15 jul 2026", low:70.12, lowDate:"7 ago 2025", now:168.29 },
+    { t:"QLYS", name:"Qualys, Inc.", ccy:"$", ath:205.89, athDate:"19 dez 2023", low:74.51, lowDate:"9 abr 2026", now:161.06 },
+    { t:"PANW", name:"Palo Alto Networks", ccy:"$", ath:376.98, athDate:"5 ago 2026", low:139.57, lowDate:"24 fev 2026", now:366.34 },
+    { t:"AME", name:"AMETEK, Inc.", ccy:"$", ath:257.95, athDate:"jul 2026", low:174.43, lowDate:"ago 2025", now:254.05, approxAth:true },
+    { t:"ROP", name:"Roper Technologies", ccy:"$", ath:595.17, athDate:"mar 2025", low:305.96, lowDate:"mai 2026", now:394.00, approxLow:true },
+    { t:"FANUY", name:"Fanuc Corporation (ADR)", ccy:"$", ath:null, athDate:"—", low:12.27, lowDate:"52 sem", now:20.46, high52:27.54 },
+    { t:"ROK", name:"Rockwell Automation", ccy:"$", ath:497.36, athDate:"30 jun 2026", low:305.44, lowDate:"2025/26", now:453.05 },
+    { t:"ABBNY", name:"ABB Ltd (ADR)", ccy:"$", ath:110.20, athDate:"2 jun 2026", low:64.38, lowDate:"2025/26", now:101.80 },
+  ]},
+  { group: "Valor e Qualidade", items: [
+    { t:"BRK-B", name:"Berkshire Hathaway Inc.", ccy:"$", ath:542.07, athDate:"2 mai 2025", low:461.37, lowDate:"ago 2025", now:517.22 },
+    { t:"ISRG", name:"Intuitive Surgical, Inc.", ccy:"$", ath:616.00, athDate:"23 jan 2025", low:328.57, lowDate:"jul 2026", now:375.26 },
+    { t:"V", name:"Visa Inc.", ccy:"$", ath:373.97, athDate:"29 jul 2026", low:293.89, lowDate:"1 abr 2026", now:369.59 },
+    { t:"MA", name:"Mastercard Incorporated", ccy:"$", ath:601.77, athDate:"22 ago 2025", low:464.52, lowDate:"3 jun 2026", now:573.00 },
+    { t:"MCO", name:"Moody's Corporation", ccy:"$", ath:546.88, athDate:"15 jan 2026", low:402.28, lowDate:"12 fev 2026", now:483.67 },
+    { t:"KO", name:"The Coca-Cola Company", ccy:"$", ath:90.92, athDate:"jul 2026", low:65.35, lowDate:"29 set 2025", now:86.83, approxAth:true },
+    { t:"PG", name:"Procter & Gamble Co.", ccy:"$", ath:180.43, athDate:"2025", low:137.62, lowDate:"7 jan 2026", now:148.01, approxAth:true },
+    { t:"CL", name:"Colgate-Palmolive Co.", ccy:"$", ath:109.30, athDate:"5 set 2024", low:74.55, lowDate:"3 nov 2025", now:92.13 },
+    { t:"COST", name:"Costco Wholesale Corp.", ccy:"$", ath:1096.50, athDate:"19 mai 2026", low:844.06, lowDate:"16 dez 2025", now:941.99 },
+  ]},
+];
+
+function fmt(v, ccy){
+  if(v === null || v === undefined) return "—";
+  return ccy + v.toLocaleString('pt-PT', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function renderCard(item){
+  const high = item.ath !== null && item.ath !== undefined ? item.ath : item.high52;
+  const low = item.low;
+  const now = item.now;
+  let pct = 50;
+  if(high && low && now){
+    pct = Math.max(2, Math.min(98, ((now - low) / (high - low)) * 100));
+  }
+  const athLabel = item.ath !== null ? fmt(item.ath, item.ccy) : `${fmt(item.high52, item.ccy)} (52 sem)`;
+  return `
+  <div class="card ${item.today ? 'today' : ''}">
+    <div class="card-head">
+      <span class="ticker">${item.t}</span>
+      <span class="price-now">${fmt(item.now, item.ccy)}</span>
+    </div>
+    <p class="name">${item.name}</p>
+    <div class="range-wrap">
+      <div class="range-bar">
+        <div class="range-marker" style="left:${pct}%;"></div>
+      </div>
+      <div class="range-labels">
+        <span>mín. 52 sem</span>
+        <span>máx. histórico</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div>
+        <p class="stat-label">Mínimo 52 semanas</p>
+        <p class="stat-value lo">${fmt(item.low, item.ccy)}</p>
+        <p class="stat-date">${item.lowDate}</p>
+      </div>
+      <div>
+        <p class="stat-label">Máximo histórico</p>
+        <p class="stat-value hi">${athLabel}</p>
+        <p class="stat-date">${item.athDate}</p>
+      </div>
+    </div>
+    ${item.approxAth || item.approxLow ? '<p class="note">Valor aproximado — fontes divergem ligeiramente.</p>' : ''}
+    ${item.t === 'FANUY' ? '<p class="note">ADR pouco líquida — sem máximo histórico fiável, apenas intervalo de 52 semanas.</p>' : ''}
+  </div>`;
+}
+
+function renderGroup(group){
+  return `
+  <section class="group" data-group="${group.group}">
+    <p class="group-title">${group.group} <span class="count">${group.items.length}</span></p>
+    <div class="grid">
+      ${group.items.map(renderCard).join('')}
+    </div>
+  </section>`;
+}
+
+const main = document.getElementById('main');
+const tabsEl = document.getElementById('tabs');
+
+function render(filter){
+  main.innerHTML = DATA
+    .filter(g => filter === 'Todas' || g.group === filter)
+    .map(renderGroup).join('');
+}
+
+const tabNames = ['Todas', ...DATA.map(g => g.group)];
+tabsEl.innerHTML = tabNames.map((name, i) =>
+  `<div class="tab ${i===0?'active':''}" data-name="${name}">${name === 'Todas' ? 'Todas' : name.split(' ')[0]}</div>`
+).join('');
+
+tabsEl.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabsEl.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    render(tab.dataset.name);
+  });
+});
+
+render('Todas');
+</script>
+
+</body>
+</html>
