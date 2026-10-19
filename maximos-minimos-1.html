@@ -272,7 +272,7 @@
 
 <div class="topbar">
   <h1>Máximos &amp; Mínimos</h1>
-  <p class="updated">Atualizado a 10 de outubro de 2026 · preços de mercado, pesquisa externa</p>
+  <p class="updated">Atualizado a 19 de outubro de 2026 · preços de mercado, pesquisa externa</p>
   <div class="tabs" id="tabs"></div>
 </div>
 
@@ -285,44 +285,44 @@
 <script>
 const DATA = [
   { group: "Carteira particular", items: [
-    { t:"ASML", name:"ASML Holding N.V.", ccy:"€", ath:1741.0, athDate:"30 jun 2026", low:813.8, lowDate:"ago 2025", now:1601.6, c1m:6.94, c6m:29.71, c1y:null },
-    { t:"MU", name:"Micron Technology", ccy:"$", ath:1255.0, athDate:"25 jun 2026", low:179.61, lowDate:"out 2025", now:1029.0, c1m:0.12, c6m:144.13, c1y:435.04 },
-    { t:"NVDA", name:"NVIDIA Corporation", ccy:"$", ath:243.37, athDate:"6 out 2026", low:164.27, lowDate:"52 sem", now:229.28, c1m:2.51, c6m:24.67, c1y:19.06 },
-    { t:"MSFT", name:"Microsoft Corporation", ccy:"$", ath:553.72, athDate:"28 out 2025", low:348.54, lowDate:"25 jun 2026", now:535.07, c1m:8.83, c6m:43.43, c1y:2.43 },
-    { t:"APH", name:"Amphenol Corporation", ccy:"$", ath:89.93, athDate:"7 out 2026", low:59.01, lowDate:"ago 2025", now:87.24, approxAth:true, c1m:7.25, c6m:26.73, c1y:38.19 },
-    { t:"GOOGL", name:"Alphabet Inc.", ccy:"$", ath:408.61, athDate:"18 mai 2026", low:235.84, lowDate:"2025/26", now:351.66, c1m:6.35, c6m:10.42, c1y:45.6 },
-    { t:"AVGO", name:"Broadcom Inc.", ccy:"$", ath:495.0, athDate:"3 jun 2026", low:289.96, lowDate:"ago 2025", now:361.54, c1m:-0.78, c6m:1.87, c1y:4.79 },
-    { t:"EDP", name:"EDP — Energias de Portugal", ccy:"€", ath:5.66, athDate:"8 jan 2021", low:3.693, lowDate:"ago 2025", now:4.8, c1m:1.59, c6m:0.88, c1y:null },
-    { t:"O", name:"Realty Income Corp.", ccy:"$", ath:67.94, athDate:"2 mar 2026", low:53.33, lowDate:"7 out 2026", now:54.18, approxAth:true, c1m:-9.87, c6m:-14.27, c1y:-8.2 },
-    { t:"VICI", name:"VICI Properties Inc.", ccy:"$", ath:33.93, athDate:"4 ago 2025", low:22.43, lowDate:"out 2026", now:22.88, approxAth:true, c1m:-9.24, c6m:null, c1y:null },
+    { t:"ASML", name:"ASML Holding N.V.", ccy:"€", ath:1741, athDate:"30 jun 2026", low:822.2, lowDate:"52 sem", now:1477.2, c1m:5.8, c6m:null, c1y:69.21 },
+    { t:"MU", name:"Micron Technology", ccy:"$", ath:1255, athDate:"25 jun 2026", low:192.4, lowDate:"52 sem", now:878.84, c1m:-5.15, c6m:null, c1y:355.33 },
+    { t:"NVDA", name:"NVIDIA Corporation", ccy:"$", ath:243.37, athDate:"6 out 2026", low:164.27, lowDate:"52 sem", now:214.13, c1m:0.11, c6m:null, c1y:18.88 },
+    { t:"MSFT", name:"Microsoft Corporation", ccy:"$", ath:553.72, athDate:"28 out 2025", low:349.2, lowDate:"25 jun 2026", now:529.05, c1m:7.9, c6m:null, c1y:3.86 },
+    { t:"APH", name:"Amphenol Corporation", ccy:"$", ath:89.93, athDate:"7 out 2026", low:59.01, lowDate:"ago 2025", now:79.35, approxAth:true, c1m:2.71, c6m:null, c1y:28.63 },
+    { t:"GOOGL", name:"Alphabet Inc.", ccy:"$", ath:408.61, athDate:"18 mai 2026", low:244.15, lowDate:"52 sem", now:340.59, c1m:-0.66, c6m:null, c1y:36.34 },
+    { t:"AVGO", name:"Broadcom Inc.", ccy:"$", ath:495, athDate:"3 jun 2026", low:289.96, lowDate:"ago 2025", now:328.75, c1m:-3.17, c6m:null, c1y:-3.57 },
+    { t:"EDP", name:"EDP — Energias de Portugal", ccy:"€", ath:5.66, athDate:"8 jan 2021", low:3.693, lowDate:"ago 2025", now:4.92, c1m:null, c6m:null, c1y:null },
+    { t:"O", name:"Realty Income Corp.", ccy:"$", ath:67.94, athDate:"2 mar 2026", low:53.15, lowDate:"7 out 2026", now:56.08, approxAth:true, c1m:-1.87, c6m:null, c1y:-5.68 },
+    { t:"VICI", name:"VICI Properties Inc.", ccy:"$", ath:33.93, athDate:"4 ago 2025", low:22.43, lowDate:"out 2026", now:23.6, approxAth:true, c1m:-3.79, c6m:null, c1y:-24.58 },
   ]},
   { group: "Robótica e Cibersegurança", items: [
-    { t:"CHKP", name:"Check Point Software", ccy:"$", ath:233.47, athDate:"6 jun 2025", low:112.23, lowDate:"30 abr 2026", now:137.18, c1m:1.57, c6m:null, c1y:-30.73 },
-    { t:"FTNT", name:"Fortinet, Inc.", ccy:"$", ath:194.95, athDate:"9 out 2026", low:73.55, lowDate:"ago 2025", now:194.75, today:true, c1m:23.87, c6m:141.45, c1y:125.95 },
-    { t:"QLYS", name:"Qualys, Inc.", ccy:"$", ath:205.89, athDate:"19 dez 2023", low:74.51, lowDate:"9 abr 2026", now:202.42, c1m:18.95, c6m:null, c1y:55.97 },
-    { t:"PANW", name:"Palo Alto Networks", ccy:"$", ath:432.33, athDate:"out 2026", low:139.57, lowDate:"24 fev 2026", now:418.78, approxAth:true, c1m:24.97, c6m:null, c1y:92.29 },
-    { t:"AME", name:"AMETEK, Inc.", ccy:"$", ath:261.16, athDate:"13 ago 2026", low:179.24, lowDate:"ago 2025", now:248.58, c1m:5.21, c6m:null, c1y:35.61 },
-    { t:"ROP", name:"Roper Technologies", ccy:"$", ath:586.95, athDate:"5 mar 2025", low:305.96, lowDate:"mai 2026", now:364.09, approxAth:true, c1m:-6.73, c6m:4.06, c1y:-29.98 },
-    { t:"FANUY", name:"Fanuc Corporation (ADR)", ccy:"$", ath:null, athDate:"—", low:14.03, lowDate:"52 sem", now:19.41, high52:27.54, c1m:3.46, c6m:null, c1y:null },
-    { t:"ROK", name:"Rockwell Automation", ccy:"$", ath:497.36, athDate:"30 jun 2026", low:332.71, lowDate:"2025/26", now:432.59, c1m:1.53, c6m:null, c1y:26.19 },
-    { t:"ABBNY", name:"ABB Ltd (ADR)", ccy:"$", ath:110.2, athDate:"2 jun 2026", low:67.24, lowDate:"2025/26", now:96.0, c1m:-0.93, c6m:null, c1y:30.7 },
+    { t:"CHKP", name:"Check Point Software", ccy:"$", ath:233.47, athDate:"6 jun 2025", low:112.23, lowDate:"30 abr 2026", now:137.87, c1m:0.13, c6m:null, c1y:-27.53 },
+    { t:"FTNT", name:"Fortinet, Inc.", ccy:"$", ath:197.13, athDate:"out 2026", low:73.55, lowDate:"ago 2025", now:169.13, approxAth:true, c1m:-1.54, c6m:null, c1y:104.02 },
+    { t:"QLYS", name:"Qualys, Inc.", ccy:"$", ath:206.25, athDate:"out 2026", low:74.51, lowDate:"9 abr 2026", now:181.05, approxAth:true, c1m:-1.1, c6m:null, c1y:41.7 },
+    { t:"PANW", name:"Palo Alto Networks", ccy:"$", ath:432.33, athDate:"out 2026", low:139.57, lowDate:"24 fev 2026", now:342, approxAth:true, c1m:-8.96, c6m:null, c1y:67.82 },
+    { t:"AME", name:"AMETEK, Inc.", ccy:"$", ath:261.16, athDate:"13 ago 2026", low:182.87, lowDate:"52 sem", now:248.17, c1m:6.88, c6m:null, c1y:33.58 },
+    { t:"ROP", name:"Roper Technologies", ccy:"$", ath:586.95, athDate:"5 mar 2025", low:305.96, lowDate:"mai 2026", now:382.71, approxAth:true, c1m:1.83, c6m:null, c1y:-24.14 },
+    { t:"FANUY", name:"Fanuc Corporation (ADR)", ccy:"$", ath:null, athDate:"—", low:14.8, lowDate:"52 sem", now:18.44, high52:27.54, c1m:-1.44, c6m:null, c1y:30.38 },
+    { t:"ROK", name:"Rockwell Automation", ccy:"$", ath:497.36, athDate:"30 jun 2026", low:347.53, lowDate:"52 sem", now:426.23, c1m:2.73, c6m:null, c1y:22.52 },
+    { t:"ABBNY", name:"ABB Ltd (ADR)", ccy:"$", ath:110.2, athDate:"2 jun 2026", low:67.24, lowDate:"2025/26", now:91.05, c1m:-3.82, c6m:null, c1y:40.25 },
   ]},
   { group: "Valor e Qualidade", items: [
-    { t:"BRK-B", name:"Berkshire Hathaway Inc.", ccy:"$", ath:539.8, athDate:"2 mai 2025", low:464.01, lowDate:"ago 2025", now:515.62, c1m:1.76, c6m:6.27, c1y:3.8 },
-    { t:"ISRG", name:"Intuitive Surgical, Inc.", ccy:"$", ath:616.0, athDate:"23 jan 2025", low:328.57, lowDate:"jul 2026", now:423.96, c1m:20.02, c6m:-6.81, c1y:-4.46 },
-    { t:"V", name:"Visa Inc.", ccy:"$", ath:386.84, athDate:"9 out 2026", low:293.89, lowDate:"1 abr 2026", now:385.45, today:true, c1m:4.92, c6m:25.03, c1y:11.07 },
-    { t:"MA", name:"Mastercard Incorporated", ccy:"$", ath:601.62, athDate:"24 ago 2026", low:464.52, lowDate:"3 jun 2026", now:589.14, c1m:3.81, c6m:16.99, c1y:4.36 },
-    { t:"MCO", name:"Moody's Corporation", ccy:"$", ath:546.88, athDate:"15 jan 2026", low:402.28, lowDate:"12 fev 2026", now:464.23, c1m:-2.18, c6m:5.93, c1y:-5.73 },
-    { t:"KO", name:"The Coca-Cola Company", ccy:"$", ath:92.49, athDate:"24 ago 2026", low:66.0, lowDate:"out 2025", now:88.05, c1m:0.57, c6m:12.63, c1y:32.67 },
-    { t:"PG", name:"Procter & Gamble Co.", ccy:"$", ath:180.43, athDate:"dez 2024", low:137.62, lowDate:"7 jan 2026", now:151.23, approxAth:true, c1m:6.02, c6m:3.11, c1y:0.43 },
-    { t:"CL", name:"Colgate-Palmolive Co.", ccy:"$", ath:109.3, athDate:"5 set 2024", low:74.54, lowDate:"3 nov 2025", now:88.27, c1m:0.27, c6m:2.59, c1y:13.44 },
-    { t:"COST", name:"Costco Wholesale Corp.", ccy:"$", ath:1096.5, athDate:"19 mai 2026", low:844.06, lowDate:"16 dez 2025", now:946.92, c1m:4.91, c6m:-8.25, c1y:0.43 },
+    { t:"BRK-B", name:"Berkshire Hathaway Inc.", ccy:"$", ath:539.8, athDate:"2 mai 2025", low:464.01, lowDate:"ago 2025", now:532.02, c1m:2.35, c6m:null, c1y:8.03 },
+    { t:"ISRG", name:"Intuitive Surgical, Inc.", ccy:"$", ath:616, athDate:"23 jan 2025", low:328.57, lowDate:"jul 2026", now:426.7, c1m:11.62, c6m:null, c1y:-3.71 },
+    { t:"V", name:"Visa Inc.", ccy:"$", ath:404.74, athDate:"out 2026", low:293.89, lowDate:"1 abr 2026", now:402.61, approxAth:true, today:true, c1m:8.54, c6m:null, c1y:17.44 },
+    { t:"MA", name:"Mastercard Incorporated", ccy:"$", ath:622.49, athDate:"out 2026", low:464.52, lowDate:"3 jun 2026", now:617.42, approxAth:true, today:true, c1m:8.75, c6m:null, c1y:9.9 },
+    { t:"MCO", name:"Moody's Corporation", ccy:"$", ath:546.88, athDate:"15 jan 2026", low:402.28, lowDate:"12 fev 2026", now:485.07, c1m:4.25, c6m:null, c1y:1.9 },
+    { t:"KO", name:"The Coca-Cola Company", ccy:"$", ath:94.1, athDate:"out 2026", low:67.27, lowDate:"52 sem", now:93.9, approxAth:true, today:true, c1m:6.86, c6m:null, c1y:36.94 },
+    { t:"PG", name:"Procter & Gamble Co.", ccy:"$", ath:180.43, athDate:"dez 2024", low:137.62, lowDate:"7 jan 2026", now:159.35, approxAth:true, c1m:8.39, c6m:null, c1y:4.52 },
+    { t:"CL", name:"Colgate-Palmolive Co.", ccy:"$", ath:109.3, athDate:"5 set 2024", low:74.54, lowDate:"3 nov 2025", now:94.11, c1m:8.15, c6m:null, c1y:21.23 },
+    { t:"COST", name:"Costco Wholesale Corp.", ccy:"$", ath:1096.5, athDate:"19 mai 2026", low:844.06, lowDate:"16 dez 2025", now:989.11, c1m:10.67, c6m:null, c1y:5.84 },
   ]},
   { group: "Vasco", items: [
-    { t:"IONQ", name:"IonQ, Inc.", ccy:"$", ath:84.64, athDate:"13 out 2025", low:25.89, lowDate:"30 mar 2026", now:39.89, c1m:4.59, c6m:null, c1y:-46.31 },
-    { t:"RGTI", name:"Rigetti Computing, Inc.", ccy:"$", ath:null, athDate:"—", low:12.53, lowDate:"52 sem", now:14.03, high52:58.15, c1m:-7.94, c6m:null, c1y:-67.55 },
-    { t:"QNT", name:"Quantinuum Inc.", ccy:"$", ath:86.79, athDate:"6 jul 2026", low:41.04, lowDate:"9 out 2026", now:41.3, approxLow:true, c1m:-15.52, c6m:null, c1y:null },
-    { t:"IBM", name:"International Business Machines Corp.", ccy:"$", ath:332.46, athDate:"2 jun 2026", low:199.19, lowDate:"52 sem", now:227.13, c1m:-5.34, c6m:null, c1y:null },
+    { t:"IONQ", name:"IonQ, Inc.", ccy:"$", ath:84.64, athDate:"13 out 2025", low:25.89, lowDate:"30 mar 2026", now:31.28, c1m:-15.09, c6m:null, c1y:-56.8 },
+    { t:"RGTI", name:"Rigetti Computing, Inc.", ccy:"$", ath:null, athDate:"—", low:11.11, lowDate:"out 2026", now:11.8, high52:47.78, c1m:-20.22, c6m:null, c1y:-79.06 },
+    { t:"QNT", name:"Quantinuum Inc.", ccy:"$", ath:86.79, athDate:"6 jul 2026", low:33.02, lowDate:"14 out 2026", now:36.55, c1m:-29.73, c6m:null, c1y:null },
+    { t:"IBM", name:"International Business Machines Corp.", ccy:"$", ath:332.46, athDate:"2 jun 2026", low:199.19, lowDate:"52 sem", now:232.14, c1m:-2.25, c6m:null, c1y:-17.39 },
   ]},
 ];
 
